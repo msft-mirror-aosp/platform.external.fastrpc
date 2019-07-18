@@ -794,6 +794,7 @@ int remote_handle_invoke_domain(int domain, remote_handle handle, uint32_t sc, r
 	}
     FARF(HIGH,"debug:sc:%x,handle:%x\n",sc,handle);
 	nErr = ioctl(dev, req, (unsigned long)&invoke);
+	free(args);
 bail:
 	return nErr;
 }
