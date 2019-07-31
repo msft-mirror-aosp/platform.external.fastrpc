@@ -1575,7 +1575,7 @@ static int open_shell(int domain_id, apps_std_FILE *fh, int unsigned_shell) {
 
       nErr = apps_std_fopen(absName, "r", fh);
       if (nErr) {
-        FARF(ALWAYS, "Searching for %s%d ...", shell_name, domain);
+        FARF(HIGH, "Searching for %s%d ...", shell_name, domain);
         nErr = apps_std_fopen_with_env("ADSP_LIBRARY_PATH", ";", shell_absName, "r", fh);
       }
    }
@@ -1683,7 +1683,7 @@ static int apps_dev_init(int domain) {
 			}
 			nErr = ioctl(hlist[domain].dev, FASTRPC_IOCTL_INIT_CREATE, (unsigned long)&uproc);
 			if (nErr == AEE_SUCCESS) {
-				FARF(ALWAYS, "Successfully created user PD on domain %d (attrs 0x%x)", domain, hlist[domain].procattrs);
+				FARF(HIGH, "Successfully created user PD on domain %d (attrs 0x%x)", domain, hlist[domain].procattrs);
 			}
 		} else {
 			FARF(ERROR, "Error: %s called for unknown mode %d", __func__, battach);
